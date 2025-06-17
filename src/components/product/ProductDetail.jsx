@@ -9,7 +9,8 @@ const ProductDetail = () => {
     const [product, setProduct] = useState();
       const navigate = useNavigate();
     const {id} = useParams();
-    const url = "http://localhost:1000/api";
+   // const url = "http://localhost:1000/api";
+   const url = "https://mern-e-commerce-9opy.onrender.com/api";
     useEffect(() => {
       const fetchProduct = async ()=>{
         const api = await axios.get (`${url}/product/${id}`,{
