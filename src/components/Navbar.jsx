@@ -152,8 +152,8 @@ const Navbar = () => {
             <div className="item" onClick={() => setFilteredData(products)}>
               No Filter
             </div>
-            <div className="item" onClick={() => filterbyCategory('grains')}>
-              Grains
+            <div className="item" onClick={() => filterbyCategory('grain')}>
+              Grain
             </div>
             <div className="item" onClick={() => filterbyCategory('rice')}>
               Rice

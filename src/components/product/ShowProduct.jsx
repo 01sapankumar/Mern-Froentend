@@ -4,6 +4,16 @@ import { Link } from 'react-router-dom'
 
 const ShowProduct = () => {
   const {products, filteredData,addToCart}= useContext(AppContext)
+  const activities = [
+  { name: "Katarni Chura", image: "https://i.ibb.co/jZqTz8j4/Nandni-Raj-Katarni-Chura-500g-max-price-80-mini-price-65.png" },
+  { name: "Katarni Rice", image: "https://i.ibb.co/V08zvdsH/f.png" },
+  { name: "Khatta Meetha", image: "https://i.ibb.co/TqppGPkj/z1.png" },
+  { name: "Mong Dal", image: "https://i.ibb.co/0pV5wMHH/a1.png" },
+    { name: "Bhagalpuri Chura", image: "https://i.ibb.co/fz4dJLyk/Nandni-Raj-Katarni-Rice-5kg-max-Price-650-mini-price-525.png" },
+  { name: "Chana Dal", image: "https://i.ibb.co/snW7gb3/Whats-App-Image-2025-06-15-at-11-59-21-2136e408.jpg" },
+  { name: "Spick Namkeen", image: "https://i.ibb.co/j9yyG2G4/e1.png" },
+
+];
   return (
     <>
     <div id="carouselExampleCaptions" className="carousel slide">
@@ -14,7 +24,7 @@ const ShowProduct = () => {
   </div>
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src="https://i.ibb.co/0pV5wMHH/a1.png" className="d-block w-100" alt="..." />
+      <img src="https://i.ibb.co/jZqTz8j4/Nandni-Raj-Katarni-Chura-500g-max-price-80-mini-price-65.png" className="d-block w-100" alt="..." />
      
     </div>
     <div className="carousel-item">
@@ -34,10 +44,47 @@ const ShowProduct = () => {
     <span className="visually-hidden">Next</span>
   </button>
 </div>
+<div className="service-highlights">
+  <div className="highlight-box">
+    <img src="https://cdn-icons-png.flaticon.com/128/633/633611.png" alt="Free Shipping" className="highlight-icon" />
+    <div>
+      <h4>Free Shipping</h4>
+      <p>Above ₹500</p>
+    </div>
+  </div>
+  <div className="highlight-box">
+    <img src="https://cdn-icons-png.flaticon.com/128/3523/3523885.png" alt="Cash on Delivery" className="highlight-icon" />
+    <div>
+      <h4>Cash on Delivery soon</h4>
+      <p>on all orders</p>
+    </div>
+  </div>
+  <div className="highlight-box">
+    <img src="https://cdn-icons-png.flaticon.com/128/9901/9901222.png" alt="Easy Returns" className="highlight-icon" />
+    <div>
+      <h4>Easy Returns</h4>
+      <p>for 7 days</p>
+    </div>
+  </div>
+</div>
+
+    <div className="activity-section">
+      <h2>Shop By Activity</h2>
+      <div className="activity-grid">
+        {activities.map((activity, index) => (
+          <div key={index} className="activity-card">
+            <img src={activity.image} alt={activity.name} />
+            <div className="activity-label">{activity.name}</div>
+          </div>
+        ))}
+      </div>
+      <h3 className="watch-buy-text">See to buy the product</h3>
+    </div>
+
 
 <div className="Show-Pro">
-<h1 class="hidden md:block text-black text-3xl font-bold text-center mt-5">
-  Nandni Products Authentic, Handpicked & Delivered Fresh from the Manufacturer
+<h1 className="hidden md:block text-black text-3xl font-bold text-center mt-5">
+  Discover Authentic, Handpicked Products — Freshly Delivered from Trusted Local Sources
 </h1>
 
 </div>
