@@ -12,7 +12,6 @@ const RelatedProduct = ({ category }) => {
     }, [category,products])
     
   return (
-    <>
 <div className="Related-container">
   <h1>Related Product</h1>
   <div className="related-products">
@@ -58,9 +57,6 @@ const RelatedProduct = ({ category }) => {
     ))}
   </div>
 </div>
-
-
-      </>
   )
 };
 export default RelatedProduct
