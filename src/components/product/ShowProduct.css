@@ -193,3 +193,16 @@
 .footer-column ul li:hover {
   color: #fff;
 }
+/* Instead of .product-card */
+.product-grid .product-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}

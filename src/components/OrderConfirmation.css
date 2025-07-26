@@ -1,0 +1,86 @@
+.order-confirmation {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.confirmation-message {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.confirmation-message h1 {
+  font-size: 2rem;
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-message h3 {
+  font-size: 1.3rem;
+  color: #f44336;
+}
+
+.order-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.summary-section, .shipping-details {
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.summary-section h2, .shipping-details h2 {
+  margin-bottom: 1rem;
+  color: red;
+  font-size: 1.5rem;
+}
+
+.shipping-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.shipping-details li {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 4px;
+}
+
+.continue-btn {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.continue-btn button {
+  background-color: red;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px red;
+}
+
+.continue-btn button:hover {
+  background-color: #ff3333;
+  box-shadow: 0 0 12px red;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .order-summary {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .summary-section, .shipping-details {
+    width: 48%;
+  }
+}

@@ -1,87 +1,103 @@
-import React, {useContext, useEffect, useState} from 'react'
-import AppContext from '../context/AppContext'
+import React, { useContext, useEffect, useState } from 'react';
+import AppContext from '../context/AppContext';
+import './TableProduct.css';
 
-const TableProduct = ({cart}) => {
-  const { decreaseQty,addToCart, removeFromCart,clearCart} = useContext(AppContext);
-  const [qty, setQty] = useState(0)
+const TableProduct = ({ cart }) => {
+  const { decreaseQty, addToCart, removeFromCart } = useContext(AppContext);
+  const [qty, setQty] = useState(0);
   const [price, setPrice] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-      let qty = 0;
-      let price = 0;
-      if(cart?.items){
-        for (let i =0; i<cart?.items?.length; i++){
-          qty += cart.items[i].qty
-          price += cart.items[i].price
-        }
+    let totalQty = 0;
+    let totalPrice = 0;
+    if (cart?.items) {
+      for (let i = 0; i < cart.items.length; i++) {
+        totalQty += cart.items[i].qty;
+        totalPrice += cart.items[i].price;
       }
-      setPrice(price)
-      setQty(qty)
-      
-    }, [cart]);
+    }
+    setQty(totalQty);
+    setPrice(totalPrice);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // initial check
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [cart]);
+
   return (
-    <>
-      <table className="table table-bordered border-primary col-md-6">
-  <thead>
-    <tr>
-      <th scope="col" className="bg-dark text-light">Product img</th>
-      <th scope="col" className="bg-dark text-light">Title</th>
-      <th scope="col" className="bg-dark text-light">Price</th>
-      <th scope="col" className="bg-dark text-light">Qty</th>
-      <th scope="col" className="bg-dark text-light">Qty ++</th>
-      <th scope="col" className="bg-dark text-light">Qty --</th>
-      <th scope="col" className="bg-dark text-light">remove</th>
+    <div className="table-container">
+      {isMobile ? (
+        <div className="card-list">
+          {cart?.items?.map((product) => (
+            <div key={product._id} className="product-card">
+              <img src={product.imgSrc} alt={product.title} className="card-image" />
+              <div className="card-details">
+                <h4>{product.title}</h4>
+                <p><strong>Price:</strong> ₹{product.price}</p>
+                <p><strong>Qty:</strong> {product.qty}</p>
+                <div className="card-actions">
+                  <button onClick={() => addToCart(product?.productId, product.title, product.price / product.qty, 1, product.imgSrc)}>➕</button>
+                  <button onClick={() => decreaseQty(product?.productId, 1)}>➖</button>
+                  <button onClick={() => {
+                    if (window.confirm('Remove this item?')) {
+                      removeFromCart(product?.productId);
+                    }
+                  }}>🗑️</button>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="card-total">
+            <p><strong>Total Qty:</strong> {qty}</p>
+            <p><strong>Total Price:</strong> ₹{price}</p>
+          </div>
+        </div>
+      ) : (
+        <table className="cart-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Add</th>
+              <th>Remove</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cart?.items?.map((product) => (
+              <tr key={product._id}>
+                <td><img src={product.imgSrc} alt={product.title} className="product-img" /></td>
+                <td>{product.title}</td>
+                <td>₹{product.price}</td>
+                <td>{product.qty}</td>
+                <td><button onClick={() => addToCart(product?.productId, product.title, product.price / product.qty, 1, product.imgSrc)}>➕</button></td>
+                <td><button onClick={() => decreaseQty(product?.productId, 1)}>➖</button></td>
+                <td><button onClick={() => {
+                  if (window.confirm('Remove this item?')) {
+                    removeFromCart(product?.productId);
+                  }
+                }}>🗑️</button></td>
+              </tr>
+            ))}
+            <tr className="total-row">
+              <td colSpan="2">Total</td>
+              <td><strong>₹{price}</strong></td>
+              <td><strong>{qty}</strong></td>
+              <td colSpan="3"></td>
+            </tr>
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+};
 
-    </tr>
-  </thead>
-  <tbody>
-    {cart?.items?.map ((product)=>(
-      <tr key={product._id}>
-      <th scope="row" className="bg-dark text-light">
-        <img src={product.imgSrc} style={{ border:'3px solid yellow', borderRadius:'10px'}}/></th>
-      <td className="bg-dark text-light text-center m-5">{product.title}</td>
-      <td className="bg-dark text-light  m-5">{product.price}</td>
-      <td className="bg-dark text-light m-5">{product.qty}</td>
-      <td className="bg-dark text-light m-5">
-      <span className="material-symbols-outlined" onClick={()=>
-      addToCart(product?.productId, product.title, product.price/product.qty,1,product.imgSrc)}
- >
-add_circle
-</span>
-<h6>for add the product 😊</h6>
-
-      </td>
-      <td className="bg-dark text-light m-5">
-      <span className="material-symbols-outlined" onClick={()=>
-      decreaseQty(product?.productId,1)}
-      >
-do_not_disturb_on
-</span>
-<h6>for decrease the product 😳</h6>
-      </td>
-      <td className="bg-dark text-light m-5">
-      <span className="material-symbols-outlined" onClick={()=>{
-              if(confirm("Are you want remove from cart")){
-                removeFromCart(product?.productId);
-              }
-            }
-            } >
-delete
-</span>
-<h6>for delete the product 😫</h6>
-      </td>
-    </tr>
-    ))}
-          <tr>
-    <th scope="row" className="bg-dark text-light" />
-      <td className="bg-dark text-light"><button className='btn btn-primary' style={{fontWeight:'bold'}}>Total</button></td>
-      <td className="bg-dark text-light"><button className='btn btn-warning'style={{fontWeight:'bold'}}>{price}</button></td>
-      <td className="bg-dark text-light"><button className='btn btn-info'style={{fontWeight:'bold'}}>{qty}</button></td>
-    </tr>
-  </tbody>
-</table>
-    </>
-  )
-}
-
-export default TableProduct
+export default TableProduct;

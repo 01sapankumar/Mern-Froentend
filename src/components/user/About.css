@@ -1,0 +1,113 @@
+.about-wrapper {
+  background-color: #f8f4f0;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.about-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+/* Flip Card Styles */
+.flip-box {
+  background-color: transparent;
+  width: 90%;
+  max-width: 900px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.flipped .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  backface-visibility: hidden;
+  background-color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.flip-box-front {
+  z-index: 2;
+}
+
+.flip-box-back {
+  transform: rotateY(180deg);
+  background-color: #e8eaf6;
+}
+
+/* Gallery */
+.gallery-section {
+  margin-top: 2rem;
+}
+
+.image-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.gallery-image {
+  flex: 0 0 auto;
+  height: 180px;
+  width: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flip-box {
+    height: 400px;
+  }
+
+  .flip-box-front,
+  .flip-box-back {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+
+  .gallery-image {
+    height: 160px;
+    width: 240px;
+  }
+}
