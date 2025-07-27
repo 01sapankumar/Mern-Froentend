@@ -19,8 +19,8 @@
 
 /* Logo */
 .navbar-logo-img {
-  height: 40px;
-  border-radius: 8px;
+  height: 60px;
+  border-radius: 2px;
   object-fit: contain;
 }
 
