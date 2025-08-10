@@ -1,113 +1,141 @@
-body {
-  font-family: 'Georgia', 'Times New Roman', Times, serif;
-  margin: 0;
-  padding: 0;
-}
-
+/* Fullscreen container with earthy gradient */
 .register-container {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #f0e6d6, #d5c6a1); /* soft wheat + beige */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #ffe6ec, #d0e8ff);
-  min-height: 100vh;
-  animation: slideFade 1s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-@keyframes slideFade {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Animated floating grain images */
+.shape {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
 }
 
+.shape1 {
+  width: 250px;
+  height: 250px;
+  background-image: url('https://cdn-icons-png.flaticon.com/128/6327/6327254.png');
+  top: -60px;
+  left: -60px;
+}
+
+.shape2 {
+  width: 200px;
+  height: 200px;
+  background-image: url('https://cdn-icons-png.flaticon.com/128/9764/9764719.png');
+  bottom: -50px;
+  right: -50px;
+}
+
+.shape3 {
+  width: 180px;
+  height: 180px;
+  background-image: url('https://cdn-icons-png.flaticon.com/128/9764/9764719.png');
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Organic Glassmorphic Register Box */
 .register-box {
-  max-width: 600px;
-  width: 100%;
-  background: #ffffff;
-  border: 2px solid #ffc107;
-  border-radius: 25px;
-  padding: 40px 30px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(153, 118, 58, 0.2);
+  text-align: center;
+  width: 360px;
+  color: #5a3e2b;
+  border: 1px solid rgba(153, 118, 58, 0.2);
+  animation: fadeInUp 1s ease forwards;
 }
 
-.register-box:hover {
-  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.15);
+/* Fade-in Up Animation */
+@keyframes fadeInUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0px); opacity: 1; }
 }
 
 .register-title {
-  text-align: center;
-  color: #2d2d2d;
+  font-size: 2rem;
   font-weight: bold;
-  font-size: 2.2rem;
-  font-family: 'Georgia', serif;
-  margin-bottom: 25px;
-  position: relative;
+  margin-bottom: 5px;
+  color: #7c5a36;
 }
 
-.register-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: #ffc107;
-  margin: 10px auto 0 auto;
-  border-radius: 10px;
-}
-
-.form-group {
+.register-subtitle {
+  font-size: 0.9rem;
   margin-bottom: 20px;
+  color: #927b5c;
 }
 
-.form-label {
-  color: #333;
-  font-weight: bold;
-  font-size: 1rem;
-  font-family: 'Georgia', serif;
-  margin-bottom: 6px;
-  display: block;
+/* Form Fields */
+.form-group {
+  text-align: left;
+  margin-bottom: 15px;
 }
 
-.form-control {
+.form-group label {
+  font-size: 0.9rem;
+  color: #6e5a3d;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid rgba(153, 118, 58, 0.3);
+  border-radius: 8px;
+  outline: none;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: #5a3e2b;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #b58c4f;
+  box-shadow: 0 0 8px rgba(181, 140, 79, 0.4);
+}
+
+/* Organic Styled Button */
+.register-btn {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Times New Roman', serif;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: #28a745;
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
-}
-
-.submit-btn-container {
-  margin-top: 25px;
-  text-align: center;
-}
-
-.register-btn {
-  background: linear-gradient(to right, #28a745, #218838);
+  background: linear-gradient(90deg, #b58c4f, #a1793b);
+  border: none;
   color: white;
   font-weight: bold;
-  font-family: 'Georgia', serif;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 30px;
   font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .register-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(165, 124, 58, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .register-box {
+    width: 90%;
+    padding: 25px;
+  }
 }

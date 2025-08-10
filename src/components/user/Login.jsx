@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Import external CSS
+import './Login.css';
 
 const Login = () => {
   const { login } = useContext(AppContext);
@@ -27,35 +27,41 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <div className="login-box">
-        <h1 className="login-title">User Login</h1>
+      {/* Background floating shapes */}
+      <div className="shape shape1"></div>
+      <div className="shape shape2"></div>
+      <div className="shape shape3"></div>
+
+      <div className="login-box animate-slide-in">
+        <h1 className="login-title">Welcome Back</h1>
+        <p className="login-subtitle">Please login to continue</p>
+        
         <form onSubmit={submitHandler} className="login-form">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+            <label>Email</label>
             <input
               name="email"
               value={formData.email}
               onChange={onChangeHandler}
               type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              placeholder="Enter your email"
+              required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+            <label>Password</label>
             <input
               name="password"
               value={formData.password}
               onChange={onChangeHandler}
               type="password"
-              className="form-control"
-              id="exampleInputPassword1"
+              placeholder="Enter your password"
+              required
             />
           </div>
-          <div className="submit-btn-container">
-            <button type="submit" className="login-btn">Login</button>
-          </div>
+
+          <button type="submit" className="login-btn">Login</button>
         </form>
       </div>
     </div>

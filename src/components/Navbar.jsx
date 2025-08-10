@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import Hamburger from 'hamburger-react';
-import './Navbar.css'; // ✅ External CSS
+import './Navbar.css';
 
 const Navbar = () => {
   const [searchTerm, setsearchTerm] = useState('');
@@ -38,6 +38,8 @@ const Navbar = () => {
             alt="Logo"
             className="navbar-logo-img"
           />
+          {/* NEW: Company name beside logo */}
+          <span className="navbar-brand-name">Nandni Raj</span>
         </Link>
 
         <form className="navbar-search" onSubmit={submitHandler}>
@@ -59,21 +61,19 @@ const Navbar = () => {
           <nav className={showMenu ? 'menu menu-show' : 'menu'}>
             {isAuthenticated ? (
               <>
-                <Link to="/about" className="menu-link btn-info bg-dark" onClick={handleCloseMenu}>About</Link>
-                <Link to="/contect" className="menu-link btn-info bg-dark" onClick={handleCloseMenu}>
-                  <span className="">help</span>
+                <Link to="/about" className="menu-link btn-black" onClick={handleCloseMenu}>About</Link>
+                <Link to="/contect" className="menu-link btn-black" onClick={handleCloseMenu}>
+                  <span>Help</span>
                 </Link>
-                <Link to="/cart" className="menu-link btn-success cart-button bg-dark" onClick={handleCloseMenu}>
+                <Link to="/cart" className="menu-link btn-black cart-button" onClick={handleCloseMenu}>
                   <span className="material-symbols-outlined">add_shopping_cart</span>
                   {cart?.items?.length > 0 && (
-                    <span className="cart-badge">
-                      {cart.items.length}
-                    </span>
+                    <span className="cart-badge">{cart.items.length}</span>
                   )}
                 </Link>
-                <Link to="/profile" className="menu-link btn-primary bg-dark" onClick={handleCloseMenu}>Orders</Link>
+                <Link to="/profile" className="menu-link btn-black" onClick={handleCloseMenu}>Orders</Link>
                 <button
-                  className="menu-link btn-danger"
+                  className="menu-link btn-black"
                   onClick={() => {
                     logout();
                     navigate('/');

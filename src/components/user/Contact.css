@@ -1,104 +1,136 @@
-/* Contact.css */
-
-.contact-container {
-  padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.85); /* ✅ Slightly see-through */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  backdrop-filter: blur(8px); /* ✅ Soft blur over 3D bg */
-  z-index: 1;
-  position: relative;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-}
-
-.contact-heading {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 16px;
-  background: linear-gradient(90deg, #ff758c, #ff7eb3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glow 2s ease-in-out infinite;
-}
-
-@keyframes glow {
-  0% {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  50% {
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-  }
-  100% {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-}
-
-.contact-subtext {
-  font-size: 1.25rem;
+.contact-page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdfaf6;
   color: #333;
-  font-style: italic;
-  margin-bottom: 32px;
-  font-weight: 500;
 }
 
-.contact-options {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 400px;
-  width: 100%;
-  margin-bottom: 40px;
+/* Hero Section */
+.contact-hero {
+  background: linear-gradient(135deg, #d4e7c5, #b5d6a7);
+  text-align: center;
+  padding: 40px 20px;
+  color: #2c3e50;
+  border-bottom: 3px solid #a1c88f;
 }
 
-.contact-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.contact-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.contact-hero p {
+  font-size: 1rem;
+}
+
+/* Contact Cards */
+.contact-cards {
+  display: grid;
+  gap: 20px;
+  padding: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.contact-card {
+  background: white;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
-  color: #007BFF;
-  background-color: rgba(255, 255, 255, 0.6); /* ✅ Slightly translucent */
-  padding: 12px 20px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  border: 1px solid #ccc;
+  color: #2c3e50;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-link:hover {
-  background-color: #007BFF;
-  color: white;
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.contact-card span {
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+  height: 25px;
+  margin-bottom: 6px;
 }
 
-.contact-button-wrap {
+/* Form Section */
+.contact-form-section {
+  padding: 30px;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: auto;
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #7dbb5e;
+}
+
+.contact-form button {
+  padding: 12px;
+  background: #7dbb5e;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #6aad53;
+}
+
+/* Map */
+.contact-map {
+  padding: 30px;
+  text-align: center;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Continue Shopping Button */
+.contact-button-wrap {
+  text-align: center;
+  padding: 30px;
 }
 
 .contact-button {
-  background-color: #ff758c;
+  background: #ff4d4d;
   border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
+  padding: 14px 24px;
   color: white;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .contact-button:hover {
-  background-color: #ff5470;
+  background: #e84343;
 }

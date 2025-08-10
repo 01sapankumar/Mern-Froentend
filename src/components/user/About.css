@@ -1,113 +1,356 @@
-.about-wrapper {
-  background-color: #f8f4f0;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.about-container {
+  font-family: 'Poppins', sans-serif;
   color: #333;
 }
 
-.about-heading {
+/* Animations */
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out;
+}
+.slide-up {
+  animation: slideUp 1.2s ease-in-out;
+}
+.zoom-in {
+  animation: zoomIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Hero */
+.intro-banner {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
   text-align: center;
+  padding: 60px 20px;
+  color: white;
+}
+.intro-banner h1 {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #8B4513;
-  font-weight: bold;
+}
+.intro-banner p {
+  font-size: 1.2rem;
 }
 
-.about-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 3rem;
+/* Flip Card */
+.company-story {
+  padding: 40px 20px;
+  text-align: center;
 }
-
-/* Flip Card Styles */
-.flip-box {
-  background-color: transparent;
+.info-flip-card {
   width: 90%;
-  max-width: 900px;
-  height: 300px;
+  max-width: 700px;
+  margin: auto;
   perspective: 1000px;
-  cursor: pointer;
-  margin-bottom: 2rem;
 }
-
-.flip-box-inner {
+.flip-card-inner {
   position: relative;
   width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s ease;
+  height: 250px;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
-
-.flipped .flip-box-inner {
+.info-flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
-
-.flip-box-front,
-.flip-box-back {
+.flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
+  padding: 20px;
   backface-visibility: hidden;
-  background-color: #fff;
-  font-size: 1rem;
-  line-height: 1.6;
 }
-
-.flip-box-front {
-  z-index: 2;
+.flip-card-front {
+  background: #fffaf0;
 }
-
-.flip-box-back {
+.flip-card-back {
+  background: #f5e1ce;
   transform: rotateY(180deg);
-  background-color: #e8eaf6;
+}
+
+/* Values */
+.brand-values {
+  padding: 40px 20px;
+  background: #fff7f0;
+}
+.values-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.value-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 230px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.value-item img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+/* Stats */
+.company-stats {
+  background: #ffe4e1;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px 20px;
+}
+.stat-card {
+  text-align: center;
+}
+.stat-card h2 {
+  font-size: 2rem;
+  color: #b33;
+}
+
+/* Timeline */
+.company-timeline {
+  padding: 40px 20px;
+}
+.timeline-track {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.timeline-node {
+  background: #fdf4f4;
+  padding: 20px;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
+}
+.timeline-node .year {
+  font-weight: bold;
+  color: #b33;
 }
 
 /* Gallery */
-.gallery-section {
-  margin-top: 2rem;
+.photo-gallery {
+  padding: 40px 20px;
 }
-
-.image-scroll {
+.gallery-row {
   display: flex;
+  gap: 10px;
   overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem 0;
 }
-
-.gallery-image {
-  flex: 0 0 auto;
+.gallery-pic {
   height: 180px;
-  width: 280px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.gallery-image:hover {
-  transform: scale(1.05);
+  border-radius: 8px;
+  transition: transform 0.3s;
   cursor: pointer;
 }
+.gallery-pic:hover {
+  transform: scale(1.05);
+}
+.photo-gallery {
+  padding: 3rem 1rem;
+  background: #fdfaf4;
+}
 
-/* Responsive */
-@media (max-width: 768px) {
-  .flip-box {
-    height: 400px;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.gallery-pic {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: sepia(0.2) saturate(1.2) contrast(1.05);
+  transition: transform 0.6s ease, filter 0.3s ease;
+}
+
+.gallery-card:hover .gallery-pic {
+  transform: scale(1.1);
+  filter: sepia(0.1) saturate(1.3);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  transition: background 0.3s ease;
+}
+
+.gallery-card:hover .gallery-caption {
+  background: rgba(0, 0, 0, 0.6);
+}
+/* ======== Responsive Adjustments ======== */
+
+/* Tablet (portrait & landscape) */
+@media (max-width: 1024px) {
+  .intro-banner h1 {
+    font-size: 2rem;
   }
-
-  .flip-box-front,
-  .flip-box-back {
-    font-size: 0.95rem;
-    padding: 1rem;
+  .intro-banner p {
+    font-size: 1rem;
   }
-
-  .gallery-image {
-    height: 160px;
-    width: 240px;
+  .company-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .values-list {
+    justify-content: center;
   }
 }
+
+/* Large Mobile / Small Tablet */
+@media (max-width: 768px) {
+  /* Hero section */
+  .intro-banner {
+    padding: 40px 15px;
+  }
+  .intro-banner h1 {
+    font-size: 1.8rem;
+  }
+  .intro-banner p {
+    font-size: 0.95rem;
+  }
+
+  /* Flip card height */
+  .flip-card-inner {
+    height: 220px;
+  }
+
+  /* Values layout */
+  .values-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .value-item {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Stats layout */
+  .company-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .stat-card h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Timeline layout */
+  .timeline-track {
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline-node {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .gallery-pic {
+    height: 150px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  /* Hero */
+  .intro-banner {
+    padding: 30px 10px;
+  }
+  .intro-banner h1 {
+    font-size: 1.5rem;
+  }
+  .intro-banner p {
+    font-size: 0.9rem;
+  }
+
+  /* Flip card */
+  .flip-card-inner {
+    height: 550px;
+  }
+  .footer {
+  background: linear-gradient(120deg, #f4ecd8, #e5d2b2);
+  padding: 20px 15px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #5a4634;
+  border-top: 3px solid #d0b47a;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.footer a {
+  color: #7a5a2d;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #5c4120;
+  text-decoration: underline;
+}
+
+.footer .heart {
+  color: #e25555;
+  animation: heartbeat 1.5s infinite;
+}
+
+/* Heart animation */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Mobile Friendly */
+@media (max-width: 600px) {
+  .footer-content p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+
+  }

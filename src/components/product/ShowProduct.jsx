@@ -88,7 +88,7 @@ const ShowProduct = () => {
       </div>
 
       {/* Product Intro */}
-      <div className="product-intro">
+      <div className="product-intro text-white">
         <h1>Discover Authentic, Handpicked Products — Freshly Delivered from Trusted Local Sources</h1>
       </div>
 
